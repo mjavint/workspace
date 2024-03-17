@@ -1,0 +1,10 @@
+debugpy
+pydevd-odoo
+
+# APTA
+# pycountry==23.12.11
+# requests_pkcs12==1.24
+# unidecode
+# xmlsig==1.0.1
+# xmltodict==0.13.0
+# pyrfc6266==1.0.2

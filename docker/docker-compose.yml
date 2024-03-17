@@ -1,0 +1,36 @@
+services:
+  web:
+    container_name: ${ODOO_CONTAINER_NAME}
+    image: odoo-dev:${ODOO_VERSION}
+    depends_on:
+      - db
+    ports:
+      - "${ODOO_PORT}:${ODOO_PORT}"
+      - "${DEBUGPY_PORT}:${DEBUGPY_PORT}"
+    volumes:
+      - ./conf:/etc/odoo
+      - odoo-web-data:/var/lib/odoo
+      # - ${ODOO_SERVER}:/var/lib/odoo/odoo
+      - ${CUSTOM_ADDONS}:/var/lib/odoo/custom_addons
+      - ${ENTERPRISE}:/var/lib/odoo/enterprise
+      - ${OCA_ACCOUNT_FINANCIAL_REPORT}:/var/lib/odoo/account-financial-reporting
+      - ${OCA_ACCOUNT_FINANCIAL_TOOLS}:/var/lib/odoo/account-financial-tools
+      - ${OCA_L10N_SPAIN}:/var/lib/odoo/l10n-spain
+      - ${OCA_REPORTING_ENGINE}:/var/lib/odoo/reporting-engine
+      - ${OCA_SERVER_UX}:/var/lib/odoo/server-ux
+    entrypoint: ${ENTRYPOINT}
+  db:
+    container_name: ${PG_CONTAINER_NAME}
+    image: postgres:${PG_VERSION}
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_USER=${PG_USER}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - ${PG_PORT}:5432
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-data:
+  pgdb-data:

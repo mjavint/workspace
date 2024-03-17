@@ -1,0 +1,8 @@
+{
+  "extraPaths": [
+    "/Users/mjavint/Workspaces/Repos/odoo/odoo.17.0",
+    "/Users/mjavint/Workspaces/Repos/odoo/odoo.17.0/addons",
+    "/Users/mjavint/Workspaces/Repos/themes/design-themes.17.0",
+    "/Users/mjavint/Workspaces/Repos/enterprise/enterprise.17.0",
+  ]
+}
